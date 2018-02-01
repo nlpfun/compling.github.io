@@ -7,18 +7,18 @@
   
   <title>R Keras 入门 | fun@nlp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Python 模块 Keras 支持 TensorFlow、CNTK 和 Theano 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界得到了广泛应用。R Keras 是 R 语言的 Keras 的接口，由 J. J. Allaire 等人负责维护。 R Keras 安装1234sudo apt-get updatesudo apt-get upgradesudo apt">
+  <meta name="description" content="Python 模块 Keras 支持 TensorFlow、CNTK 和 Theano 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界应用广泛。R Keras 是 R 语言的 Keras 接口，由 RSudio 的 J. J. Allaire 等人负责维护。 R Keras 安装1234sudo apt-get updatesudo apt-get upgradesud">
 <meta name="keywords" content="R,Python,Keras,Neural Network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R Keras 入门">
 <meta property="og:url" content="https://nlpfun.github.io/2018/02/01/R-NN-1/index.html">
 <meta property="og:site_name" content="fun@nlp">
-<meta property="og:description" content="Python 模块 Keras 支持 TensorFlow、CNTK 和 Theano 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界得到了广泛应用。R Keras 是 R 语言的 Keras 的接口，由 J. J. Allaire 等人负责维护。 R Keras 安装1234sudo apt-get updatesudo apt-get upgradesudo apt">
+<meta property="og:description" content="Python 模块 Keras 支持 TensorFlow、CNTK 和 Theano 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界应用广泛。R Keras 是 R 语言的 Keras 接口，由 RSudio 的 J. J. Allaire 等人负责维护。 R Keras 安装1234sudo apt-get updatesudo apt-get upgradesud">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-31T17:10:46.056Z">
+<meta property="og:updated_time" content="2018-02-01T02:59:33.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R Keras 入门">
-<meta name="twitter:description" content="Python 模块 Keras 支持 TensorFlow、CNTK 和 Theano 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界得到了广泛应用。R Keras 是 R 语言的 Keras 的接口，由 J. J. Allaire 等人负责维护。 R Keras 安装1234sudo apt-get updatesudo apt-get upgradesudo apt">
+<meta name="twitter:description" content="Python 模块 Keras 支持 TensorFlow、CNTK 和 Theano 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界应用广泛。R Keras 是 R 语言的 Keras 接口，由 RSudio 的 J. J. Allaire 等人负责维护。 R Keras 安装1234sudo apt-get updatesudo apt-get upgradesud">
   
   
     <link rel="icon" href="/favicon.png">
@@ -85,7 +85,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Python 模块 <a href="https://keras.io/" target="_blank" rel="noopener">Keras</a> 支持 <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">TensorFlow</a>、<a href="https://github.com/Microsoft/cntk" target="_blank" rel="noopener">CNTK</a> 和 <a href="https://github.com/Theano/Theano" target="_blank" rel="noopener">Theano</a> 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界得到了广泛应用。<a href="https://keras.rstudio.com/" target="_blank" rel="noopener">R Keras</a> 是 R 语言的 Keras 的接口，由 <a href="https://www.manning.com/books/deep-learning-with-r" target="_blank" rel="noopener">J. J. Allaire</a> 等人负责维护。</p>
+        <p>Python 模块 <a href="https://keras.io/" target="_blank" rel="noopener">Keras</a> 支持 <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">TensorFlow</a>、<a href="https://github.com/Microsoft/cntk" target="_blank" rel="noopener">CNTK</a> 和 <a href="https://github.com/Theano/Theano" target="_blank" rel="noopener">Theano</a> 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界应用广泛。<a href="https://keras.rstudio.com/" target="_blank" rel="noopener">R Keras</a> 是 R 语言的 Keras 接口，由 <a href="https://www.rstudio.com/" target="_blank" rel="noopener">RSudio</a> 的 <a href="https://www.manning.com/books/deep-learning-with-r" target="_blank" rel="noopener">J. J. Allaire</a> 等人负责维护。</p>
 <h2 id="R-Keras-安装"><a href="#R-Keras-安装" class="headerlink" title="R Keras 安装"></a>R Keras 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get install python-pip python-dev </span><br><span class="line">sudo apt-get install build-essential cmake git unzip pkg-config libopenblas-dev liblapack-dev</span><br></pre></td></tr></table></figure>
 <p>使用 R 命令行安装所需模块</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">install.packages(<span class="string">"keras"</span>,repos=<span class="string">'http://cran.rstudio.com/'</span>) </span><br><span class="line"><span class="keyword">library</span>(keras)</span><br><span class="line">install_keras() <span class="comment"># cpu version of Tensorflow and Theano</span></span><br></pre></td></tr></table></figure>
@@ -93,7 +93,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/R-NN-1/" data-id="cjd3bx9xg0000y67lqdkwjbg4" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/R-NN-1/" data-id="cjd3wxwg50002zo7lfbfrve62" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/">Keras</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -104,11 +104,15 @@
     
 <nav id="article-nav">
   
-  
-    <a href="/2018/01/31/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo 简介</div>
+    <a href="/2018/02/01/Hexo-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hexo 简介
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -139,11 +143,11 @@
       <ul>
         
           <li>
-            <a href="/2018/02/01/R-NN-1/">R Keras 入门</a>
+            <a href="/2018/02/01/Hexo-1/">Hexo 简介</a>
           </li>
         
           <li>
-            <a href="/2018/01/31/hello-world/">Hexo 简介</a>
+            <a href="/2018/02/01/R-NN-1/">R Keras 入门</a>
           </li>
         
       </ul>
