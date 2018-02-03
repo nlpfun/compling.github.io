@@ -60,6 +60,132 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-R-Sampling-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/03/R-Sampling-1/" class="article-date">
+  <time datetime="2018-02-03T12:59:30.000Z" itemprop="datePublished">2018-02-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/03/R-Sampling-1/">R 分层抽样</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>数据索引文件 data.csv 中的 task 列包括 3 个类别：task 1，task 2 和 task 3。从各类别随机抽取 80% 的数据作为训练语料，其余 20% 用作测试语料。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th>task</th>
+<th>file</th>
+<th>structure</th>
+<th>content</th>
+<th>language</th>
+<th>score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td>TASK1</td>
+<td>161102007511.txt</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td>TASK1</td>
+<td>161102008210.txt</td>
+<td>3.0</td>
+<td>3.5</td>
+<td>3.0</td>
+<td>9.5</td>
+</tr>
+<tr>
+<td style="text-align:left">……</td>
+</tr>
+<tr>
+<td style="text-align:left">1935</td>
+<td>TASK3</td>
+<td>161102007425.txt</td>
+<td>4.0</td>
+<td>3.5</td>
+<td>3.5</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="抽样"><a href="#抽样" class="headerlink" title="抽样"></a>抽样</h2><p>使用 R <em>sampling</em> 包的 <em>strata()</em> 函数进行分层抽样，抽样后的训练和测试数据索引保存为 train.csv 和 test.csv。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># clear memory</span></span><br><span class="line">rm(list=ls(all=<span class="literal">T</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># load sampling package</span></span><br><span class="line"><span class="keyword">library</span>(sampling)</span><br><span class="line"></span><br><span class="line"><span class="comment"># read in data index</span></span><br><span class="line">task.idx &lt;- read.csv(<span class="string">"data.csv"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># select train and test data</span></span><br><span class="line">n &lt;- round(<span class="number">4</span>/<span class="number">5</span>*nrow(task.idx)/<span class="number">3</span>)</span><br><span class="line">sub_train &lt;- strata(task.idx, stratanames=(<span class="string">"task"</span>), size=rep(n, <span class="number">3</span>), method=<span class="string">"srswor"</span>)</span><br><span class="line">data_train &lt;- task.idx[sub_train$ID_unit,]</span><br><span class="line">data_test  &lt;- task.idx[-sub_train$ID_unit,]</span><br><span class="line"></span><br><span class="line"><span class="comment"># save the index of train and test data</span></span><br><span class="line">write.csv(data_train, file=<span class="string">"train.csv"</span>, quote=<span class="literal">F</span>, row.names=<span class="literal">F</span>)</span><br><span class="line">write.csv(data_test, file=<span class="string">"test.csv"</span>, quote=<span class="literal">F</span>, row.names=<span class="literal">F</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/02/03/R-Sampling-1/" data-id="cjd7eduy000087t7lh517ahuj" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Reading-List" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/03/Reading-List/" class="article-date">
+  <time datetime="2018-02-02T17:04:46.000Z" itemprop="datePublished">2018-02-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/03/Reading-List/">阅读书目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/02/03/Reading-List/" data-id="cjd7eduy200097t7lrs7sw8o3" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Open-Source-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/02/02/Open-Source-1/" class="article-date">
@@ -147,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/02/Open-Source-1/" data-id="cjd5n5zyx0005wk7lth71g2k5" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/02/Open-Source-1/" data-id="cjd7eduxr00057t7lfhu8p6qo" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -241,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/MOOC-1/" data-id="cjd5n5zyq0004wk7l6zbqmowv" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/MOOC-1/" data-id="cjd7eduxc00027t7llpgwvsdj" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MOOC/">MOOC</a></li></ul>
@@ -291,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/Hexo-1/" data-id="cjd5n5zyg0002wk7lkre5wq6f" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/Hexo-1/" data-id="cjd7eduxl00047t7l92eqtw7v" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -363,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/Conference-2018/" data-id="cjd5n5zy00000wk7ls8li4e09" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/Conference-2018/" data-id="cjd7eduwy00007t7l61xtz9qo" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Conference/">Conference</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li></ul>
@@ -406,7 +532,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/R-NN-1/" data-id="cjd5n5zz00006wk7l0nbrhfzg" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/R-NN-1/" data-id="cjd7eduxv00067t7lqhi56mdg" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/">Keras</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -432,7 +558,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOOC/">MOOC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/">R</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOOC/">MOOC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
     </div>
   </div>
 
@@ -445,6 +571,14 @@
       <ul>
         
           <li>
+            <a href="/2018/02/03/R-Sampling-1/">R 分层抽样</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/03/Reading-List/">阅读书目</a>
+          </li>
+        
+          <li>
             <a href="/2018/02/02/Open-Source-1/">开源项目</a>
           </li>
         
@@ -454,14 +588,6 @@
         
           <li>
             <a href="/2018/02/01/Hexo-1/">Hexo 简介</a>
-          </li>
-        
-          <li>
-            <a href="/2018/02/01/Conference-2018/">学术会议-2018</a>
-          </li>
-        
-          <li>
-            <a href="/2018/02/01/R-NN-1/">R Keras 入门</a>
           </li>
         
       </ul>
