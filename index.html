@@ -60,6 +60,149 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-R-DataFrame-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/22/R-DataFrame-1/" class="article-date">
+  <time datetime="2018-04-22T14:45:30.000Z" itemprop="datePublished">2018-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/22/R-DataFrame-1/">R DataFrame 排序和筛选</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th>Type</th>
+<th>Term</th>
+<th>Length</th>
+<th>Freq</th>
+<th>Cover</th>
+<th>Fisher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td>p</td>
+<td>nn</td>
+<td>1</td>
+<td>50127</td>
+<td>1546</td>
+<td>1.000000e+00</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td>l</td>
+<td>the</td>
+<td>1</td>
+<td>19479</td>
+<td>1537</td>
+<td>1.279193e-02</td>
+</tr>
+<tr>
+<td style="text-align:left">……</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">475290</td>
+<td>t</td>
+<td>the musics</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1.0000000</td>
+</tr>
+</tbody>
+</table>
+<p>特征文件 vocab 中包含基于词形、词元和词性的 <em>n</em> 元序列及其长度、频率、覆盖率和费舍尔精确检验的 <em>p</em> 值。为了提升后续算法的准确率，需要降低特征维度，筛选特征。方法如下：</p>
+<h2 id="R-DataFrame-排序和筛选"><a href="#R-DataFrame-排序和筛选" class="headerlink" title="R DataFrame 排序和筛选"></a>R DataFrame 排序和筛选</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read in feature file</span></span><br><span class="line">feature &lt;- read.delim(<span class="string">"vocab"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># reduce the number of features</span></span><br><span class="line">refined.feature &lt;- feature[which(feature$Freq &gt; <span class="number">10</span> &amp; feature$Cover &gt; <span class="number">2</span> &amp; feature$Fisher &lt; <span class="number">0.05</span>),]</span><br><span class="line"></span><br><span class="line"><span class="comment"># rank features</span></span><br><span class="line">refined.feature.order &lt;- feature[order(freature$Fisher),]</span><br></pre></td></tr></table></figure>
+<p> 实际应用中需要使用 R 的筛选功能调试各特征的组合，验证模型的准确率。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/04/22/R-DataFrame-1/" data-id="cjgayjtko0009vu7lbqcqrb1c" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Hexo-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/19/Hexo-1/" class="article-date">
+  <time datetime="2018-03-19T08:39:17.879Z" itemprop="datePublished">2018-03-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/19/Hexo-1/">Hexo 简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本网站使用 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 创建。在制作过程中参阅了许多有关 Hexo 的网络资料，如 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">Hexo 官方文档</a>、<a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">Hexo 常见问题汇总</a> 和 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">Hexo GitHub</a> 等。</p>
+<h2 id="Hexo-入门"><a href="#Hexo-入门" class="headerlink" title="Hexo 入门"></a>Hexo 入门</h2><p>Ubuntu 系统下安装和使用 Hexo 的步骤。</p>
+<h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
+<h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure>
+<p>重启命令行界面后安装 Node.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 4</span><br></pre></td></tr></table></figure>
+<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2018/03/19/Hexo-1/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/03/19/Hexo-1/" data-id="cjgayjtk10002vu7l24pkexmf" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-R-Sampling-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/02/03/R-Sampling-1/" class="article-date">
@@ -140,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/03/R-Sampling-1/" data-id="cjd7f7vf40008ub7lyfjjr1u9" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/03/R-Sampling-1/" data-id="cjgayjtkm0008vu7l00j6dz71" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -193,6 +336,12 @@
 <td><a href="https://github.com/fchollet" target="_blank" rel="noopener">Francois Chollet</a></td>
 </tr>
 <tr>
+<td><a href="https://www.amazon.com/Perl-Best-Practices-Developing-Maintainable/dp/0596001738" target="_blank" rel="noopener">Perl Best Practices</a></td>
+<td>O’Reilly</td>
+<td>2005</td>
+<td><a href="https://en.wikipedia.org/wiki/Damian_Conway" target="_blank" rel="noopener">Damian Conway</a></td>
+</tr>
+<tr>
 <td><a href="https://www.amazon.com/Making-Sense-Glamorous-English-Grammar/dp/0190660570" target="_blank" rel="noopener">Making Sense –<br>The Glamorous Story of English Grammar</a></td>
 <td>Oxford University Press</td>
 <td>2017</td>
@@ -210,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/03/Reading-List/" data-id="cjd7f7vf70009ub7lck770axf" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/03/Reading-List/" data-id="cjgayjtkr000bvu7lsvnsvdob" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
@@ -310,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/02/Open-Source-1/" data-id="cjd7f7vet0005ub7lnkn9k7hx" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/02/Open-Source-1/" data-id="cjgayjtkh0005vu7lfuiiy7f9" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -369,6 +518,12 @@
 <td><a href="https://www.coursera.org/instructor/1aguschin" target="_blank" rel="noopener">Alexander Guschin</a></td>
 </tr>
 <tr>
+<td><a href="https://www.coursera.org/learn/unix/home/info" target="_blank" rel="noopener">The Unix Workbench</a></td>
+<td><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a></td>
+<td>约翰霍普金斯大学</td>
+<td><a href="https://www.coursera.org/instructor/sean" target="_blank" rel="noopener">Sean Kross</a></td>
+</tr>
+<tr>
 <td><a href="https://www.coursera.org/learn/translation-in-practice/home" target="_blank" rel="noopener">翻译实践</a></td>
 <td><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a></td>
 <td>南京大学</td>
@@ -404,60 +559,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/MOOC-1/" data-id="cjd7f7vem0004ub7lm8nrupuv" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/MOOC-1/" data-id="cjgayjtka0004vu7l4f8ngyqf" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MOOC/">MOOC</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Hexo-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/01/Hexo-1/" class="article-date">
-  <time datetime="2018-02-01T14:11:46.223Z" itemprop="datePublished">2018-02-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/01/Hexo-1/">Hexo 简介</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本网站使用 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 创建。在制作过程中参阅了许多有关 Hexo 的网络资料，如 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">Hexo 官方文档</a>、<a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">Hexo 常见问题汇总</a> 和 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">Hexo GitHub</a> 等。</p>
-<h2 id="Hexo-入门"><a href="#Hexo-入门" class="headerlink" title="Hexo 入门"></a>Hexo 入门</h2><p>Ubuntu 系统下安装和使用 Hexo 的步骤。</p>
-<h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
-<h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure>
-<p>重启命令行界面后安装 Node.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 4</span><br></pre></td></tr></table></figure>
-<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2018/02/01/Hexo-1/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/Hexo-1/" data-id="cjd7f7ved0002ub7l5d042ltc" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
 
     </footer>
   </div>
@@ -526,7 +631,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/Conference-2018/" data-id="cjd7f7vdx0000ub7ljaeokklp" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/Conference-2018/" data-id="cjgayjtjn0000vu7leda8gxm5" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Conference/">Conference</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li></ul>
@@ -569,7 +674,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/R-NN-1/" data-id="cjd7f7vew0006ub7l59npilgw" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/R-NN-1/" data-id="cjgayjtky000cvu7l7xi037dn" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/">Keras</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -608,6 +713,14 @@
       <ul>
         
           <li>
+            <a href="/2018/04/22/R-DataFrame-1/">R DataFrame 排序和筛选</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/19/Hexo-1/">Hexo 简介</a>
+          </li>
+        
+          <li>
             <a href="/2018/02/03/R-Sampling-1/">R 分层抽样</a>
           </li>
         
@@ -617,14 +730,6 @@
         
           <li>
             <a href="/2018/02/02/Open-Source-1/">开源项目</a>
-          </li>
-        
-          <li>
-            <a href="/2018/02/01/MOOC-1/">MOOC 课程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/02/01/Hexo-1/">Hexo 简介</a>
           </li>
         
       </ul>
