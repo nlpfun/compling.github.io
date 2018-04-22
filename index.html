@@ -60,6 +60,72 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Perl-Python-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/23/Perl-Python-1/" class="article-date">
+  <time datetime="2018-04-22T16:32:05.000Z" itemprop="datePublished">2018-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/23/Perl-Python-1/">Python：费舍尔精确检验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python 模块 <a href="https://pypi.org/project/fisher/" target="_blank" rel="noopener">fisher</a> 提供了费舍尔精确检验（Fisher’s Exact Test）的计算方法。利用该模块可以提取高区别度的特征，提高机器学习算法的准确率。</p>
+<h2 id="费舍尔精确检验（Fisher’s-Exact-Test）"><a href="#费舍尔精确检验（Fisher’s-Exact-Test）" class="headerlink" title="费舍尔精确检验（Fisher’s Exact Test）"></a>费舍尔精确检验（Fisher’s Exact Test）</h2><p>作文自动评分模型通常需要提取高区别度的 n 元序列，用于判定高分和低分作文：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th>Good Essay</th>
+<th>Bad Essay</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">feature A</td>
+<td>20</td>
+<td>2</td>
+</tr>
+<tr>
+<td style="text-align:left">not feature A</td>
+<td>2</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>从上例联列表可知包含 feature A 的作文分数较高。费舍尔精确检验可以统计特征的分布规律，通过 <em>p</em> 值筛选高分辨度的特征：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import fisher module</span></span><br><span class="line"><span class="keyword">from</span> fisher <span class="keyword">import</span> pvalue</span><br><span class="line"></span><br><span class="line"><span class="comment"># compute p value</span></span><br><span class="line">fisher_val = pvalue(<span class="number">20</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">20</span>).twotail</span><br></pre></td></tr></table></figure>
+<p>对应 perl 代码：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> Inline <span class="string">Python =&gt;</span> &lt;&lt;<span class="string">'END'</span>;</span><br><span class="line">from fisher import pvalue</span><br><span class="line"></span><br><span class="line">def get_pvalue(a,b,c,d):</span><br><span class="line">   <span class="keyword">return</span> pvalue(a,b,c,d).two_tail</span><br><span class="line"></span><br><span class="line">END</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $fisher_val = get_pvalue(<span class="number">20</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/04/23/Perl-Python-1/" data-id="cjgb17cbr00063c7l6fuln6yt" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fisher-s-Exact-Test/">Fisher's Exact Test</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perl/">Perl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-R-DataFrame-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/22/R-DataFrame-1/" class="article-date">
@@ -140,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/04/22/R-DataFrame-1/" data-id="cjgayjtko0009vu7lbqcqrb1c" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/04/22/R-DataFrame-1/" data-id="cjgb17cbu00083c7ljs08b304" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -190,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/03/19/Hexo-1/" data-id="cjgayjtk10002vu7l24pkexmf" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/03/19/Hexo-1/" data-id="cjgb17cbi00043c7la2aub8ci" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -283,7 +349,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/03/R-Sampling-1/" data-id="cjgayjtkm0008vu7l00j6dz71" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/03/R-Sampling-1/" data-id="cjgb17cc0000b3c7lx26ip19p" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -359,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/03/Reading-List/" data-id="cjgayjtkr000bvu7lsvnsvdob" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/03/Reading-List/" data-id="cjgb17cc5000c3c7lnv10yc4q" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
@@ -459,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/02/Open-Source-1/" data-id="cjgayjtkh0005vu7lfuiiy7f9" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/02/Open-Source-1/" data-id="cjgb17cbp00053c7ldfiio5wg" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -559,7 +625,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/MOOC-1/" data-id="cjgayjtka0004vu7l4f8ngyqf" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/MOOC-1/" data-id="cjgb17cba00023c7lps5gc8x7" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MOOC/">MOOC</a></li></ul>
@@ -631,7 +697,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/Conference-2018/" data-id="cjgayjtjn0000vu7leda8gxm5" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/Conference-2018/" data-id="cjgb17cax00003c7l0m1dn3s5" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Conference/">Conference</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li></ul>
@@ -674,7 +740,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/R-NN-1/" data-id="cjgayjtky000cvu7l7xi037dn" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/R-NN-1/" data-id="cjgb17cby00093c7lw2l4qalz" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/">Keras</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -700,7 +766,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOOC/">MOOC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fisher-s-Exact-Test/">Fisher's Exact Test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOOC/">MOOC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
     </div>
   </div>
 
@@ -711,6 +777,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/04/23/Perl-Python-1/">Python：费舍尔精确检验</a>
+          </li>
         
           <li>
             <a href="/2018/04/22/R-DataFrame-1/">R DataFrame 排序和筛选</a>
@@ -726,10 +796,6 @@
         
           <li>
             <a href="/2018/02/03/Reading-List/">阅读书目</a>
-          </li>
-        
-          <li>
-            <a href="/2018/02/02/Open-Source-1/">开源项目</a>
           </li>
         
       </ul>
