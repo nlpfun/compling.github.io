@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Perl：LWP 模块 | fun@nlp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Perl 模块 LWP 自动下载网页文件代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#!/usr/bin/perl# usage:# put this script and the index file in the same directory#">
+<meta name="keywords" content="Perl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Perl：LWP 模块">
+<meta property="og:url" content="https://nlpfun.github.io/2018/05/01/Perl-LWP-1/index.html">
+<meta property="og:site_name" content="fun@nlp">
+<meta property="og:description" content="Perl 模块 LWP 自动下载网页文件代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#!/usr/bin/perl# usage:# put this script and the index file in the same directory#">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-30T17:40:50.218Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Perl：LWP 模块">
+<meta name="twitter:description" content="Perl 模块 LWP 自动下载网页文件代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051#!/usr/bin/perl# usage:# put this script and the index file in the same directory#">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">fun@nlp</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nlpfun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Perl-LWP-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/01/Perl-LWP-1/" class="article-date">
+  <time datetime="2018-04-30T16:32:05.000Z" itemprop="datePublished">2018-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Perl：LWP 模块
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Perl 模块 <a href="https://metacpan.org/pod/LWP::UserAgent" target="_blank" rel="noopener">LWP</a> 自动下载网页文件代码：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/perl</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># usage:</span></span><br><span class="line"><span class="comment"># put this script and the index file in the same directory</span></span><br><span class="line"><span class="comment"># creat a directory for your files, e.g. C:/corpus</span></span><br><span class="line"><span class="comment"># and run the following command:</span></span><br><span class="line"><span class="comment"># perl downloader.pl C:/corpus 1 10</span></span><br><span class="line"><span class="comment"># all the files will be saved in the directory C:/corpus</span></span><br><span class="line"><span class="comment"># check the error_log for anything that goes wrong</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> File::Spec;</span><br><span class="line"><span class="keyword">use</span> LWP;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $ua  = LWP::UserAgent-&gt;new;</span><br><span class="line"><span class="keyword">my</span> $dir = <span class="keyword">shift</span> @ARGV;</span><br><span class="line"><span class="keyword">my</span> $start_id = <span class="keyword">shift</span> @ARGV;</span><br><span class="line"><span class="keyword">my</span> $end_id   = <span class="keyword">shift</span> @ARGV;</span><br><span class="line"></span><br><span class="line"><span class="keyword">open</span> <span class="keyword">my</span> $INDEX, <span class="string">'&lt;'</span>, <span class="string">'index'</span>;</span><br><span class="line"><span class="keyword">open</span> <span class="keyword">my</span> $LOG, <span class="string">'&gt;'</span>, <span class="string">'error_log'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> ( <span class="keyword">defined</span>(<span class="keyword">my</span> $row = &lt;$INDEX&gt;) ) &#123;</span><br><span class="line">    <span class="keyword">next</span> <span class="keyword">if</span> $. &lt; $start_id + <span class="number">1</span>; <span class="comment"># skip index header</span></span><br><span class="line">    <span class="keyword">last</span> <span class="keyword">if</span> $. &gt; $end_id + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">chomp</span> $row;</span><br><span class="line">    <span class="keyword">my</span> @records = <span class="keyword">split</span> <span class="regexp">/\t/</span>, $row;</span><br><span class="line">    <span class="keyword">my</span> $url     = $records[<span class="number">3</span>]; <span class="comment"># get url</span></span><br><span class="line">    <span class="keyword">my</span> $id      = $records[<span class="number">5</span>]; <span class="comment"># get id</span></span><br><span class="line"></span><br><span class="line">    $url        = <span class="string">"http://www.thesite.com/Archives/"</span> . $url;</span><br><span class="line">    <span class="keyword">my</span> $out_fn  = File::Spec-&gt;catfile($dir, <span class="keyword">sprintf</span>(<span class="string">"%06d"</span>, $id));</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">my</span> $OUT, <span class="string">'&gt;'</span>, $out_fn;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Downloading file '</span>, $id, <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'url: '</span>, $url, <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'save to: '</span>, $out_fn, <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">my</span> $response = $ua-&gt;get($url);</span><br><span class="line">    <span class="keyword">if</span> ( $response-&gt;is_success ) &#123;</span><br><span class="line">        <span class="keyword">print</span> $OUT $response-&gt;content;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Done!'</span>, <span class="string">"\n"</span>;</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">print</span> $LOG $id, <span class="string">"\t"</span>, <span class="string">'Error in '</span>, $url, <span class="string">"\n"</span>;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Error!! Please check error_log for more information.'</span>, <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__END_<span class="number">_</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/05/01/Perl-LWP-1/" data-id="cjgmj5f0y0008ma7lbmmep994" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perl/">Perl</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/01/Perl-ML-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Perl：Machine Learning
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/29/R-DataFrame-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">R 读取外部数据</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fisher-s-Exact-Test/">Fisher's Exact Test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOOC/">MOOC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/01/Perl-ML-1/">Perl：Machine Learning</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/01/Perl-LWP-1/">Perl：LWP 模块</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/29/R-DataFrame-2/">R 读取外部数据</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/23/Perl-Python-1/">Python：费舍尔精确检验</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/22/R-DataFrame-1/">R DataFrame 排序和筛选</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Lei Liu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

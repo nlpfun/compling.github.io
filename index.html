@@ -60,6 +60,87 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Perl-ML-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/01/Perl-ML-1/" class="article-date">
+  <time datetime="2018-04-30T16:35:05.000Z" itemprop="datePublished">2018-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/01/Perl-ML-1/">Perl：Machine Learning</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>目前，大部分的机器学习框架均使用 Python、Java 等主流语言编写，Perl 在这一领域已经落后很多了。为了改善这种状况，<a href="http://blogs.perl.org/users/sergey_kolychev/2017/02/machine-learning-in-perl.html" target="_blank" rel="noopener">Sergey Kolychev</a> 用 Perl 编写了深度学习平台 <a href="https://mxnet.incubator.apache.org/" target="_blank" rel="noopener">MXNet</a> 的 API 接口，并得到了 <a href="https://mxnet.incubator.apache.org/api/perl/index.html" target="_blank" rel="noopener">MXNet 官网的推荐</a>。可从 MetaCPAN 网站下载 <a href="https://metacpan.org/pod/AI::MXNet" target="_blank" rel="noopener">AI::MXNet</a>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/05/01/Perl-ML-1/" data-id="cjgmj9f1t0000mk7l8vznpscy" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perl/">Perl</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Perl-LWP-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/01/Perl-LWP-1/" class="article-date">
+  <time datetime="2018-04-30T16:32:05.000Z" itemprop="datePublished">2018-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/01/Perl-LWP-1/">Perl：LWP 模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Perl 模块 <a href="https://metacpan.org/pod/LWP::UserAgent" target="_blank" rel="noopener">LWP</a> 自动下载网页文件代码：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/perl</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># usage:</span></span><br><span class="line"><span class="comment"># put this script and the index file in the same directory</span></span><br><span class="line"><span class="comment"># creat a directory for your files, e.g. C:/corpus</span></span><br><span class="line"><span class="comment"># and run the following command:</span></span><br><span class="line"><span class="comment"># perl downloader.pl C:/corpus 1 10</span></span><br><span class="line"><span class="comment"># all the files will be saved in the directory C:/corpus</span></span><br><span class="line"><span class="comment"># check the error_log for anything that goes wrong</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> strict;</span><br><span class="line"><span class="keyword">use</span> warnings;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> File::Spec;</span><br><span class="line"><span class="keyword">use</span> LWP;</span><br><span class="line"></span><br><span class="line"><span class="keyword">my</span> $ua  = LWP::UserAgent-&gt;new;</span><br><span class="line"><span class="keyword">my</span> $dir = <span class="keyword">shift</span> @ARGV;</span><br><span class="line"><span class="keyword">my</span> $start_id = <span class="keyword">shift</span> @ARGV;</span><br><span class="line"><span class="keyword">my</span> $end_id   = <span class="keyword">shift</span> @ARGV;</span><br><span class="line"></span><br><span class="line"><span class="keyword">open</span> <span class="keyword">my</span> $INDEX, <span class="string">'&lt;'</span>, <span class="string">'index'</span>;</span><br><span class="line"><span class="keyword">open</span> <span class="keyword">my</span> $LOG, <span class="string">'&gt;'</span>, <span class="string">'error_log'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> ( <span class="keyword">defined</span>(<span class="keyword">my</span> $row = &lt;$INDEX&gt;) ) &#123;</span><br><span class="line">    <span class="keyword">next</span> <span class="keyword">if</span> $. &lt; $start_id + <span class="number">1</span>; <span class="comment"># skip index header</span></span><br><span class="line">    <span class="keyword">last</span> <span class="keyword">if</span> $. &gt; $end_id + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">chomp</span> $row;</span><br><span class="line">    <span class="keyword">my</span> @records = <span class="keyword">split</span> <span class="regexp">/\t/</span>, $row;</span><br><span class="line">    <span class="keyword">my</span> $url     = $records[<span class="number">3</span>]; <span class="comment"># get url</span></span><br><span class="line">    <span class="keyword">my</span> $id      = $records[<span class="number">5</span>]; <span class="comment"># get id</span></span><br><span class="line"></span><br><span class="line">    $url        = <span class="string">"http://www.thesite.com/Archives/"</span> . $url;</span><br><span class="line">    <span class="keyword">my</span> $out_fn  = File::Spec-&gt;catfile($dir, <span class="keyword">sprintf</span>(<span class="string">"%06d"</span>, $id));</span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">my</span> $OUT, <span class="string">'&gt;'</span>, $out_fn;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Downloading file '</span>, $id, <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'url: '</span>, $url, <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'save to: '</span>, $out_fn, <span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">my</span> $response = $ua-&gt;get($url);</span><br><span class="line">    <span class="keyword">if</span> ( $response-&gt;is_success ) &#123;</span><br><span class="line">        <span class="keyword">print</span> $OUT $response-&gt;content;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Done!'</span>, <span class="string">"\n"</span>;</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">print</span> $LOG $id, <span class="string">"\t"</span>, <span class="string">'Error in '</span>, $url, <span class="string">"\n"</span>;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Error!! Please check error_log for more information.'</span>, <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__END_<span class="number">_</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/05/01/Perl-LWP-1/" data-id="cjgmj5f0y0008ma7lbmmep994" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perl/">Perl</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-R-DataFrame-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/29/R-DataFrame-2/" class="article-date">
@@ -89,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/04/29/R-DataFrame-2/" data-id="cjgmhqiif001g9l7lox4tynrk" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/04/29/R-DataFrame-2/" data-id="cjgmj5f16000cma7l272c4qir" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -155,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/04/23/Perl-Python-1/" data-id="cjgmhoxph00199l7l1fgizoy2" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/04/23/Perl-Python-1/" data-id="cjgmj5f0v0006ma7lr2fucvka" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fisher-s-Exact-Test/">Fisher's Exact Test</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perl/">Perl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -248,7 +329,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/04/22/R-DataFrame-1/" data-id="cjgmhoxpa00189l7lag90ia7j" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/04/22/R-DataFrame-1/" data-id="cjgmj5f100009ma7ln938krhq" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -298,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/03/19/Hexo-1/" data-id="cjgmhoxna00009l7lknm9clja" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/03/19/Hexo-1/" data-id="cjgmj5f0b0002ma7lrma1dp9l" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -391,7 +472,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/03/R-Sampling-1/" data-id="cjgmhoxo800099l7lks67jtl5" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/03/R-Sampling-1/" data-id="cjgmj5f19000ema7lk9trcxdy" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -467,7 +548,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/03/Reading-List/" data-id="cjgmhoxob000a9l7lfylmx5mu" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/03/Reading-List/" data-id="cjgmj5f1b000gma7llhubncqf" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
@@ -567,7 +648,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/02/Open-Source-1/" data-id="cjgmhoxo200059l7l2548wgx1" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/02/Open-Source-1/" data-id="cjgmj5f0q0005ma7lz1zl2et5" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -667,7 +748,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/MOOC-1/" data-id="cjgmhoxnp00029l7ldq4pkyoh" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/01/MOOC-1/" data-id="cjgmj5f0k0004ma7lbjokyv5y" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MOOC/">MOOC</a></li></ul>
@@ -680,122 +761,12 @@
 
 
   
-    <article id="post-Conference-2018" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/01/Conference-2018/" class="article-date">
-  <time datetime="2018-02-01T12:10:40.000Z" itemprop="datePublished">2018-02-01</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/01/Conference-2018/">学术会议-2018</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <table>
-<thead>
-<tr>
-<th style="text-align:center">会议</th>
-<th>时间</th>
-<th style="text-align:center">地点</th>
-<th>摘要字数</th>
-<th>截止日期</th>
-<th>录用通知</th>
-<th>投稿方式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><a href="http://www.corpuschina.org/?p=90&amp;lang=en" target="_blank" rel="noopener">第四届中国语料库<br>语言学大会</a></td>
-<td>2018.06.02 –<br>2018.06.03</td>
-<td style="text-align:center">华中科技大学<br>武汉</td>
-<td>不少于 300 字</td>
-<td>2018.03.08</td>
-<td>2018.04.05</td>
-<td>eap2017@126.com</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://www.apcla.net/" target="_blank" rel="noopener">2018 亚太语料库<br>语言学大会</a></td>
-<td>2018.09.16 –<br>2018.09.20</td>
-<td style="text-align:center">香川县高松市<br>日本</td>
-<td>不少于 300 字</td>
-<td>2018.05.10</td>
-<td>2018.05.31</td>
-<td>EasyChair (待 2 号通知)</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/Conference-2018/" data-id="cjgmhoxnw00049l7lwqjitev6" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Conference/">Conference</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-R-NN-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/01/R-NN-1/" class="article-date">
-  <time datetime="2018-01-31T16:29:39.000Z" itemprop="datePublished">2018-02-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/01/R-NN-1/">R Keras 入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Python 模块 <a href="https://keras.io/" target="_blank" rel="noopener">Keras</a> 支持 <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">TensorFlow</a>、<a href="https://github.com/Microsoft/cntk" target="_blank" rel="noopener">CNTK</a> 和 <a href="https://github.com/Theano/Theano" target="_blank" rel="noopener">Theano</a> 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界应用广泛。<a href="https://keras.rstudio.com/" target="_blank" rel="noopener">R Keras</a> 是 R 语言的 Keras 接口，由 <a href="https://www.rstudio.com/" target="_blank" rel="noopener">RSudio</a> 的 <a href="https://www.manning.com/books/deep-learning-with-r" target="_blank" rel="noopener">J. J. Allaire</a> 等人负责维护。</p>
-<h2 id="R-Keras-安装"><a href="#R-Keras-安装" class="headerlink" title="R Keras 安装"></a>R Keras 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get install python-pip python-dev </span><br><span class="line">sudo apt-get install build-essential cmake git unzip pkg-config libopenblas-dev liblapack-dev</span><br></pre></td></tr></table></figure>
-<p>使用 R 命令行安装所需模块</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">install.packages(<span class="string">"keras"</span>,repos=<span class="string">'http://cran.rstudio.com/'</span>) </span><br><span class="line"><span class="keyword">library</span>(keras)</span><br><span class="line">install_keras() <span class="comment"># cpu version of Tensorflow and Theano</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/R-NN-1/" data-id="cjgmhoxo500069l7lugh3bt4e" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/">Keras</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
 
 </section>
         
@@ -821,6 +792,14 @@
       <ul>
         
           <li>
+            <a href="/2018/05/01/Perl-ML-1/">Perl：Machine Learning</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/01/Perl-LWP-1/">Perl：LWP 模块</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/29/R-DataFrame-2/">R 读取外部数据</a>
           </li>
         
@@ -830,14 +809,6 @@
         
           <li>
             <a href="/2018/04/22/R-DataFrame-1/">R DataFrame 排序和筛选</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/19/Hexo-1/">Hexo 简介</a>
-          </li>
-        
-          <li>
-            <a href="/2018/02/03/R-Sampling-1/">R 分层抽样</a>
           </li>
         
       </ul>
