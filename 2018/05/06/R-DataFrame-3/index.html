@@ -5,20 +5,20 @@
   
 
   
-  <title>R DataFrame 排序和筛选 | fun@nlp</title>
+  <title>10-k Cross Validation | fun@nlp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数据   ID Type Term Length Freq Cover Fisher     1 p nn 1 50127 1546 1.000000e+00   2 l the 1 19479 1537 1.279193e-02   ……         475290 t the musics 2 1 1 1.0000000    特征文件 vocab 中包含基于词形、词元和词性的 n 元序列及">
-<meta name="keywords" content="R">
+  <meta name="description" content="数据数据索引文件 data.csv 包括 1935 条数据。将数据分成 10 等份，用于模型的交叉验证（cross validation）。    ID task file structure content language score     1 TASK1 161102007511.txt 3.0 3.0 3.0 9.0   2 TASK1 161102008210.txt 3.0 3.5">
+<meta name="keywords" content="Machine Learning,R,Cross Validation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="R DataFrame 排序和筛选">
-<meta property="og:url" content="https://nlpfun.github.io/2018/04/22/R-DataFrame-1/index.html">
+<meta property="og:title" content="10-k Cross Validation">
+<meta property="og:url" content="https://nlpfun.github.io/2018/05/06/R-DataFrame-3/index.html">
 <meta property="og:site_name" content="fun@nlp">
-<meta property="og:description" content="数据   ID Type Term Length Freq Cover Fisher     1 p nn 1 50127 1546 1.000000e+00   2 l the 1 19479 1537 1.279193e-02   ……         475290 t the musics 2 1 1 1.0000000    特征文件 vocab 中包含基于词形、词元和词性的 n 元序列及">
+<meta property="og:description" content="数据数据索引文件 data.csv 包括 1935 条数据。将数据分成 10 等份，用于模型的交叉验证（cross validation）。    ID task file structure content language score     1 TASK1 161102007511.txt 3.0 3.0 3.0 9.0   2 TASK1 161102008210.txt 3.0 3.5">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-22T16:11:26.396Z">
+<meta property="og:updated_time" content="2018-05-06T13:43:12.317Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R DataFrame 排序和筛选">
-<meta name="twitter:description" content="数据   ID Type Term Length Freq Cover Fisher     1 p nn 1 50127 1546 1.000000e+00   2 l the 1 19479 1537 1.279193e-02   ……         475290 t the musics 2 1 1 1.0000000    特征文件 vocab 中包含基于词形、词元和词性的 n 元序列及">
+<meta name="twitter:title" content="10-k Cross Validation">
+<meta name="twitter:description" content="数据数据索引文件 data.csv 包括 1935 条数据。将数据分成 10 等份，用于模型的交叉验证（cross validation）。    ID task file structure content language score     1 TASK1 161102007511.txt 3.0 3.0 3.0 9.0   2 TASK1 161102008210.txt 3.0 3.5">
   
   
     <link rel="icon" href="/favicon.png">
@@ -63,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-R-DataFrame-1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-R-DataFrame-3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/04/22/R-DataFrame-1/" class="article-date">
-  <time datetime="2018-04-22T14:45:30.000Z" itemprop="datePublished">2018-04-22</time>
+    <a href="/2018/05/06/R-DataFrame-3/" class="article-date">
+  <time datetime="2018-05-06T12:59:30.000Z" itemprop="datePublished">2018-05-06</time>
 </a>
     
   </div>
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      R DataFrame 排序和筛选
+      10-k Cross Validation
     </h1>
   
 
@@ -85,36 +85,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><table>
+        <h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>数据索引文件 data.csv 包括 1935 条数据。将数据分成 10 等份，用于模型的交叉验证（cross validation）。</p>
+<table>
 <thead>
 <tr>
 <th style="text-align:left">ID</th>
-<th>Type</th>
-<th>Term</th>
-<th>Length</th>
-<th>Freq</th>
-<th>Cover</th>
-<th>Fisher</th>
+<th>task</th>
+<th>file</th>
+<th>structure</th>
+<th>content</th>
+<th>language</th>
+<th>score</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">1</td>
-<td>p</td>
-<td>nn</td>
-<td>1</td>
-<td>50127</td>
-<td>1546</td>
-<td>1.000000e+00</td>
+<td>TASK1</td>
+<td>161102007511.txt</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>9.0</td>
 </tr>
 <tr>
 <td style="text-align:left">2</td>
-<td>l</td>
-<td>the</td>
-<td>1</td>
-<td>19479</td>
-<td>1537</td>
-<td>1.279193e-02</td>
+<td>TASK1</td>
+<td>161102008210.txt</td>
+<td>3.0</td>
+<td>3.5</td>
+<td>3.0</td>
+<td>9.5</td>
 </tr>
 <tr>
 <td style="text-align:left">……</td>
@@ -126,27 +127,83 @@
 <td></td>
 </tr>
 <tr>
-<td style="text-align:left">475290</td>
-<td>t</td>
-<td>the musics</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>1.0000000</td>
+<td style="text-align:left">1935</td>
+<td>TASK3</td>
+<td>161102007425.txt</td>
+<td>4.0</td>
+<td>3.5</td>
+<td>3.5</td>
+<td>11</td>
 </tr>
 </tbody>
 </table>
-<p>特征文件 vocab 中包含基于词形、词元和词性的 <em>n</em> 元序列及其长度、频率、覆盖率和费舍尔精确检验的 <em>p</em> 值。为了提升后续算法的准确率，需要降低特征维度，筛选特征。方法如下：</p>
-<h2 id="R-DataFrame-排序和筛选"><a href="#R-DataFrame-排序和筛选" class="headerlink" title="R DataFrame 排序和筛选"></a>R DataFrame 排序和筛选</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read in feature file</span></span><br><span class="line">feature &lt;- read.delim(<span class="string">"vocab"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># reduce the number of features</span></span><br><span class="line">refined.feature &lt;- feature[which(feature$Freq &gt; <span class="number">10</span> &amp; feature$Cover &gt; <span class="number">2</span> &amp; feature$Fisher &lt; <span class="number">0.05</span>),]</span><br><span class="line"></span><br><span class="line"><span class="comment"># rank features</span></span><br><span class="line">refined.feature.order &lt;- feature[order(freature$Fisher),]</span><br></pre></td></tr></table></figure>
-<p> 实际应用中需要使用 R 的筛选功能调试各特征的组合，验证模型的准确率。</p>
+<h2 id="分隔数据"><a href="#分隔数据" class="headerlink" title="分隔数据"></a>分隔数据</h2><p>使用 R <em>caret</em> 包的 <em>createFolds()</em> 函数分割数据：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># load package caret </span></span><br><span class="line"><span class="keyword">library</span>(caret)</span><br><span class="line"></span><br><span class="line"><span class="comment"># read in data</span></span><br><span class="line">data &lt;- read.csv(<span class="string">'data.csv'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># create 10 random folds</span></span><br><span class="line">folds &lt;- createFolds(data$score)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add a new column folds to the original data</span></span><br><span class="line">data$folds &lt;- <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ( i <span class="keyword">in</span> <span class="number">1</span>: length(folds) ) &#123;</span><br><span class="line">    data$folds[folds[[i]]] = i</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>生成新的索引文件 data.csv：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th>task</th>
+<th>file</th>
+<th>structure</th>
+<th>content</th>
+<th>language</th>
+<th>score</th>
+<th>folds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td>TASK1</td>
+<td>161102007511.txt</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>9.0</td>
+<td>3</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td>TASK1</td>
+<td>161102008210.txt</td>
+<td>3.0</td>
+<td>3.5</td>
+<td>3.0</td>
+<td>9.5</td>
+<td>4</td>
+</tr>
+<tr>
+<td style="text-align:left">……</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">1935</td>
+<td>TASK3</td>
+<td>161102007425.txt</td>
+<td>4.0</td>
+<td>3.5</td>
+<td>3.5</td>
+<td>11</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/04/22/R-DataFrame-1/" data-id="cjguqaqjh000eoz7lc2120jy2" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/05/06/R-DataFrame-3/" data-id="cjgutubsk001qoz7lzxu0zv4l" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cross-Validation/">Cross Validation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
 
     </footer>
   </div>
@@ -154,19 +211,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/04/23/Perl-Python-1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/05/06/Python-Keras-1/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Python：费舍尔精确检验
+          Python Keras 神经网络
         
       </div>
     </a>
   
   
-    <a href="/2018/03/19/Hexo-1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/05/01/Perl-ML-1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo 简介</div>
+      <div class="article-nav-title">Perl：Machine Learning</div>
     </a>
   
 </nav>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Python Keras 神经网络 | fun@nlp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Python 模块 Keras 支持 TensorFlow、CNTK 和 Theano 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界应用广泛。 Python Keras 安装12pip install keraspip install theano 更改 Keras 配置文件 ~/.keras/keras.json 将后台系统设置为 Theano 12# change">
+<meta name="keywords" content="Neural Network,Python,Keras">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python Keras 神经网络">
+<meta property="og:url" content="https://nlpfun.github.io/2018/05/06/Python-Keras-1/index.html">
+<meta property="og:site_name" content="fun@nlp">
+<meta property="og:description" content="Python 模块 Keras 支持 TensorFlow、CNTK 和 Theano 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界应用广泛。 Python Keras 安装12pip install keraspip install theano 更改 Keras 配置文件 ~/.keras/keras.json 将后台系统设置为 Theano 12# change">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-06T14:00:04.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python Keras 神经网络">
+<meta name="twitter:description" content="Python 模块 Keras 支持 TensorFlow、CNTK 和 Theano 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界应用广泛。 Python Keras 安装12pip install keraspip install theano 更改 Keras 配置文件 ~/.keras/keras.json 将后台系统设置为 Theano 12# change">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">fun@nlp</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://nlpfun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python-Keras-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/06/Python-Keras-1/" class="article-date">
+  <time datetime="2018-05-06T13:39:39.000Z" itemprop="datePublished">2018-05-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python Keras 神经网络
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python 模块 <a href="https://keras.io/" target="_blank" rel="noopener">Keras</a> 支持 <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">TensorFlow</a>、<a href="https://github.com/Microsoft/cntk" target="_blank" rel="noopener">CNTK</a> 和 <a href="https://github.com/Theano/Theano" target="_blank" rel="noopener">Theano</a> 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界应用广泛。</p>
+<h2 id="Python-Keras-安装"><a href="#Python-Keras-安装" class="headerlink" title="Python Keras 安装"></a>Python Keras 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install keras</span><br><span class="line">pip install theano</span><br></pre></td></tr></table></figure>
+<p>更改 Keras 配置文件 ~/.keras/keras.json 将后台系统设置为 Theano</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># change backend to theano</span></span><br><span class="line">vim ~/.keras/keras.json</span><br></pre></td></tr></table></figure>
+<h2 id="用-Keras-实现一个简单的神经网络"><a href="#用-Keras-实现一个简单的神经网络" class="headerlink" title="用 Keras 实现一个简单的神经网络"></a>用 Keras 实现一个简单的神经网络</h2><pre><code class="python"><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential
+<span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Activation
+<span class="keyword">from</span> keras.optimizers <span class="keyword">import</span> SGD
+
+<span class="comment"># create train data using Numpy</span>
+<span class="comment"># x is the feature matrix and y is the label vector</span>
+x_train = np.array([[<span class="number">0</span>, <span class="number">0</span>],
+                    [<span class="number">0</span>, <span class="number">1</span>],
+                    [<span class="number">1</span>, <span class="number">0</span>],
+                    [<span class="number">1</span>, <span class="number">1</span>]])
+y_train = np.array([[<span class="number">0</span>],
+                    [<span class="number">1</span>],
+                    [<span class="number">1</span>],
+                    [<span class="number">0</span>]])
+
+<span class="comment"># load NN model</span>
+model = Sequential()
+
+<span class="comment"># specify the number of neurons in hidden layer</span>
+num_neurons = <span class="number">10</span>
+
+<span class="comment"># use Dense to create a fully connected feed forward network</span>
+model.add(Dense(num_neurons, input_dim=<span class="number">2</span>))
+
+<span class="comment"># specify the activation function for the hidden layer</span>
+model.add(Activation(<span class="string">'tanh'</span>))
+
+<span class="comment"># create the output layer</span>
+model.add(Dense(<span class="number">1</span>))
+model.add(Activation(<span class="string">'sigmoid'</span>))
+print(model.summary())
+
+<span class="comment"># specify the learning rate for the stochastic gradient descent algorithm</span>
+sgd = SGD(lr=<span class="number">0.1</span>)
+
+<span class="comment"># specify the loss function</span>
+model.compile(loss=<span class="string">'binary_crossentropy'</span>, optimizer=sgd, metrics=[<span class="string">'accuracy'</span>])
+
+<span class="comment"># train the model and learn all the parameters</span>
+model.fit(x_train, y_train, epochs=<span class="number">1000</span>)
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/05/06/Python-Keras-1/" data-id="cjguvelec00007z7l2isrbkgz" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/">Keras</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/06/R-DataFrame-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">10-k Cross Validation</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cross-Validation/">Cross Validation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fisher-s-Exact-Test/">Fisher's Exact Test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOOC/">MOOC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/06/Python-Keras-1/">Python Keras 神经网络</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/06/R-DataFrame-3/">10-k Cross Validation</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/01/Perl-ML-1/">Perl：Machine Learning</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/01/Perl-LWP-1/">Perl：LWP 模块</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/29/R-DataFrame-2/">R 读取外部数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Lei Liu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

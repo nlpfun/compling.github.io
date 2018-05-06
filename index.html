@@ -60,6 +60,241 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python-Keras-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/06/Python-Keras-1/" class="article-date">
+  <time datetime="2018-05-06T13:39:39.000Z" itemprop="datePublished">2018-05-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/06/Python-Keras-1/">Python Keras 神经网络</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python 模块 <a href="https://keras.io/" target="_blank" rel="noopener">Keras</a> 支持 <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">TensorFlow</a>、<a href="https://github.com/Microsoft/cntk" target="_blank" rel="noopener">CNTK</a> 和 <a href="https://github.com/Theano/Theano" target="_blank" rel="noopener">Theano</a> 等多个深度学习框架，为研究者提供了简洁易用的 API 接口，在工业和学术界应用广泛。</p>
+<h2 id="Python-Keras-安装"><a href="#Python-Keras-安装" class="headerlink" title="Python Keras 安装"></a>Python Keras 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install keras</span><br><span class="line">pip install theano</span><br></pre></td></tr></table></figure>
+<p>更改 Keras 配置文件 ~/.keras/keras.json 将后台系统设置为 Theano</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># change backend to theano</span></span><br><span class="line">vim ~/.keras/keras.json</span><br></pre></td></tr></table></figure>
+<h2 id="用-Keras-实现一个简单的神经网络"><a href="#用-Keras-实现一个简单的神经网络" class="headerlink" title="用 Keras 实现一个简单的神经网络"></a>用 Keras 实现一个简单的神经网络</h2><pre><code class="python"><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential
+<span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Activation
+<span class="keyword">from</span> keras.optimizers <span class="keyword">import</span> SGD
+
+<span class="comment"># create train data using Numpy</span>
+<span class="comment"># x is the feature matrix and y is the label vector</span>
+x_train = np.array([[<span class="number">0</span>, <span class="number">0</span>],
+                    [<span class="number">0</span>, <span class="number">1</span>],
+                    [<span class="number">1</span>, <span class="number">0</span>],
+                    [<span class="number">1</span>, <span class="number">1</span>]])
+y_train = np.array([[<span class="number">0</span>],
+                    [<span class="number">1</span>],
+                    [<span class="number">1</span>],
+                    [<span class="number">0</span>]])
+
+<span class="comment"># load NN model</span>
+model = Sequential()
+
+<span class="comment"># specify the number of neurons in hidden layer</span>
+num_neurons = <span class="number">10</span>
+
+<span class="comment"># use Dense to create a fully connected feed forward network</span>
+model.add(Dense(num_neurons, input_dim=<span class="number">2</span>))
+
+<span class="comment"># specify the activation function for the hidden layer</span>
+model.add(Activation(<span class="string">'tanh'</span>))
+
+<span class="comment"># create the output layer</span>
+model.add(Dense(<span class="number">1</span>))
+model.add(Activation(<span class="string">'sigmoid'</span>))
+print(model.summary())
+
+<span class="comment"># specify the learning rate for the stochastic gradient descent algorithm</span>
+sgd = SGD(lr=<span class="number">0.1</span>)
+
+<span class="comment"># specify the loss function</span>
+model.compile(loss=<span class="string">'binary_crossentropy'</span>, optimizer=sgd, metrics=[<span class="string">'accuracy'</span>])
+
+<span class="comment"># train the model and learn all the parameters</span>
+model.fit(x_train, y_train, epochs=<span class="number">1000</span>)
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/05/06/Python-Keras-1/" data-id="cjguvelec00007z7l2isrbkgz" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Keras/">Keras</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-R-DataFrame-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/06/R-DataFrame-3/" class="article-date">
+  <time datetime="2018-05-06T12:59:30.000Z" itemprop="datePublished">2018-05-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/06/R-DataFrame-3/">10-k Cross Validation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>数据索引文件 data.csv 包括 1935 条数据。将数据分成 10 等份，用于模型的交叉验证（cross validation）。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th>task</th>
+<th>file</th>
+<th>structure</th>
+<th>content</th>
+<th>language</th>
+<th>score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td>TASK1</td>
+<td>161102007511.txt</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td>TASK1</td>
+<td>161102008210.txt</td>
+<td>3.0</td>
+<td>3.5</td>
+<td>3.0</td>
+<td>9.5</td>
+</tr>
+<tr>
+<td style="text-align:left">……</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">1935</td>
+<td>TASK3</td>
+<td>161102007425.txt</td>
+<td>4.0</td>
+<td>3.5</td>
+<td>3.5</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<h2 id="分隔数据"><a href="#分隔数据" class="headerlink" title="分隔数据"></a>分隔数据</h2><p>使用 R <em>caret</em> 包的 <em>createFolds()</em> 函数分割数据：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># load package caret </span></span><br><span class="line"><span class="keyword">library</span>(caret)</span><br><span class="line"></span><br><span class="line"><span class="comment"># read in data</span></span><br><span class="line">data &lt;- read.csv(<span class="string">'data.csv'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># create 10 random folds</span></span><br><span class="line">folds &lt;- createFolds(data$score)</span><br><span class="line"></span><br><span class="line"><span class="comment"># add a new column folds to the original data</span></span><br><span class="line">data$folds &lt;- <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ( i <span class="keyword">in</span> <span class="number">1</span>: length(folds) ) &#123;</span><br><span class="line">    data$folds[folds[[i]]] = i</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>生成新的索引文件 data.csv：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th>task</th>
+<th>file</th>
+<th>structure</th>
+<th>content</th>
+<th>language</th>
+<th>score</th>
+<th>folds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td>TASK1</td>
+<td>161102007511.txt</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>9.0</td>
+<td>3</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td>TASK1</td>
+<td>161102008210.txt</td>
+<td>3.0</td>
+<td>3.5</td>
+<td>3.0</td>
+<td>9.5</td>
+<td>4</td>
+</tr>
+<tr>
+<td style="text-align:left">……</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">1935</td>
+<td>TASK3</td>
+<td>161102007425.txt</td>
+<td>4.0</td>
+<td>3.5</td>
+<td>3.5</td>
+<td>11</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://nlpfun.github.io/2018/05/06/R-DataFrame-3/" data-id="cjgutubsk001qoz7lzxu0zv4l" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cross-Validation/">Cross Validation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Perl-ML-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/01/Perl-ML-1/" class="article-date">
@@ -87,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/05/01/Perl-ML-1/" data-id="cjgmj9f1t0000mk7l8vznpscy" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/05/01/Perl-ML-1/" data-id="cjguqaqj20008oz7lshzqpvkh" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perl/">Perl</a></li></ul>
@@ -128,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/05/01/Perl-LWP-1/" data-id="cjgmj5f0y0008ma7lbmmep994" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/05/01/Perl-LWP-1/" data-id="cjguqaqiz0006oz7lne7t4bf7" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perl/">Perl</a></li></ul>
@@ -170,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/04/29/R-DataFrame-2/" data-id="cjgmj5f16000cma7l272c4qir" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/04/29/R-DataFrame-2/" data-id="cjguqaql4001koz7ld632is16" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -236,7 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/04/23/Perl-Python-1/" data-id="cjgmj5f0v0006ma7lr2fucvka" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/04/23/Perl-Python-1/" data-id="cjguqaql1001joz7liaoylslm" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fisher-s-Exact-Test/">Fisher's Exact Test</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perl/">Perl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -329,7 +564,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/04/22/R-DataFrame-1/" data-id="cjgmj5f100009ma7ln938krhq" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/04/22/R-DataFrame-1/" data-id="cjguqaqjh000eoz7lc2120jy2" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -379,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/03/19/Hexo-1/" data-id="cjgmj5f0b0002ma7lrma1dp9l" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/03/19/Hexo-1/" data-id="cjguqaqii0002oz7lh4pvtbmy" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -472,7 +707,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/03/R-Sampling-1/" data-id="cjgmj5f19000ema7lk9trcxdy" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/03/R-Sampling-1/" data-id="cjguqaqj9000boz7lkzq0rpgf" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
@@ -548,210 +783,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/03/Reading-List/" data-id="cjgmj5f1b000gma7llhubncqf" class="article-share-link">分享</a>
+      <a data-url="https://nlpfun.github.io/2018/02/03/Reading-List/" data-id="cjguqaqje000coz7lqg4l7xd5" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Open-Source-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/02/Open-Source-1/" class="article-date">
-  <time datetime="2018-02-02T02:42:05.000Z" itemprop="datePublished">2018-02-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/02/Open-Source-1/">开源项目</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>近期关注的开源项目</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>类别</th>
-<th>算法</th>
-<th>编程语言</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/nlpfun/ease" target="_blank" rel="noopener">ease</a></td>
-<td>英语作文自动评分</td>
-<td>机器学习</td>
-<td>Python</td>
-</tr>
-<tr>
-<td><a href="https://github.com/nlpfun/ats" target="_blank" rel="noopener">ats</a></td>
-<td>英语作文自动评分</td>
-<td>神经网络</td>
-<td>Python</td>
-</tr>
-<tr>
-<td><a href="https://cogcomp.org/page/resource_view/107" target="_blank" rel="noopener">ACL 2016 GEC</a></td>
-<td>英语作文语误自动检测</td>
-<td>机器学习</td>
-<td>Python Java</td>
-</tr>
-<tr>
-<td><a href="https://github.com/nlpfun/Coursera-ML-AndrewNg" target="_blank" rel="noopener">Coursera-ML-AndrewNg</a></td>
-<td>Coursera 课程笔记</td>
-<td>机器学习</td>
-<td>Python</td>
-</tr>
-<tr>
-<td><a href="https://github.com/nlpfun/deep-learning-with-r-notebooks" target="_blank" rel="noopener">DeepLearningR</a></td>
-<td>R Keras</td>
-<td>神经网络</td>
-<td>R Python</td>
-</tr>
-<tr>
-<td><a href="http://www.kristopherkyle.com/taales.html" target="_blank" rel="noopener">TAALES</a></td>
-<td>英语词汇复杂度计算</td>
-<td>频率统计</td>
-<td>Python</td>
-</tr>
-<tr>
-<td><a href="http://www.kristopherkyle.com/taassc.html" target="_blank" rel="noopener">TAASSC</a></td>
-<td>英语句法复杂度计算</td>
-<td>自动句法分析</td>
-<td>Python</td>
-</tr>
-<tr>
-<td><a href="http://www.kristopherkyle.com/taaco.html" target="_blank" rel="noopener">TAACO</a></td>
-<td>英语语篇连贯度计算</td>
-<td>词汇语义</td>
-<td>Python</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/02/Open-Source-1/" data-id="cjgmj5f0q0005ma7lz1zl2et5" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-MOOC-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/01/MOOC-1/" class="article-date">
-  <time datetime="2018-02-01T14:56:34.000Z" itemprop="datePublished">2018-02-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/01/MOOC-1/">MOOC 课程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>近期关注的 MOOC 课程列表</p>
-<table>
-<thead>
-<tr>
-<th>课程</th>
-<th>平台</th>
-<th>学校</th>
-<th>教师</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.coursera.org/learn/machine-learning/home" target="_blank" rel="noopener">机器学习</a></td>
-<td><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a></td>
-<td>斯坦福大学</td>
-<td><a href="http://www.andrewng.org/" target="_blank" rel="noopener">Andrew Ng</a></td>
-</tr>
-<tr>
-<td><a href="https://www.coursera.org/learn/competitive-data-science/home" target="_blank" rel="noopener">Kaggle 竞赛</a></td>
-<td><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a></td>
-<td>俄罗斯国立高等经济学院</td>
-<td><a href="https://www.coursera.org/instructor/1aguschin" target="_blank" rel="noopener">Alexander Guschin</a></td>
-</tr>
-<tr>
-<td><a href="https://www.coursera.org/learn/unix/home/info" target="_blank" rel="noopener">The Unix Workbench</a></td>
-<td><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a></td>
-<td>约翰霍普金斯大学</td>
-<td><a href="https://www.coursera.org/instructor/sean" target="_blank" rel="noopener">Sean Kross</a></td>
-</tr>
-<tr>
-<td><a href="https://www.coursera.org/learn/translation-in-practice/home" target="_blank" rel="noopener">翻译实践</a></td>
-<td><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a></td>
-<td>南京大学</td>
-<td><a href="http://www.chinawriter.com.cn/news/2014/2014-09-10/217410.html" target="_blank" rel="noopener">姚媛</a></td>
-</tr>
-<tr>
-<td><a href="https://www.coursera.org/learn/fanyi-ruanjian/home" target="_blank" rel="noopener">计算机辅助翻译</a></td>
-<td><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a></td>
-<td>北京大学</td>
-<td><a href="http://www.ss.pku.edu.cn/index.php/teacherteam/teacherlist/1640-%E4%BF%9E%E6%95%AC%E6%9D%BE" target="_blank" rel="noopener">俞敬松</a></td>
-</tr>
-<tr>
-<td><a href="https://www.coursera.org/specializations/intermediate-grammar" target="_blank" rel="noopener">中级语法</a></td>
-<td><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a></td>
-<td>加利福尼亚大学</td>
-<td><a href="https://www.coursera.org/instructor/tamychapman" target="_blank" rel="noopener">Tamy Chapman</a></td>
-</tr>
-<tr>
-<td><a href="https://www.coursera.org/specializations/advanced-grammar-punctuation" target="_blank" rel="noopener">高级语法</a></td>
-<td><a href="https://www.coursera.org/" target="_blank" rel="noopener">Coursera</a></td>
-<td>加利福尼亚大学</td>
-<td><a href="https://www.coursera.org/instructor/tamychapman" target="_blank" rel="noopener">Tamy Chapman</a></td>
-</tr>
-<tr>
-<td><a href="https://www.edx.org/course/english-grammar-style-uqx-write101x-6" target="_blank" rel="noopener">语法和文体</a></td>
-<td><a href="https://www.edx.org/" target="_blank" rel="noopener">edX</a></td>
-<td>昆士兰大学</td>
-<td><a href="https://www.edx.org/bio/amber-gwynne" target="_blank" rel="noopener">Amber Gwynne</a></td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://nlpfun.github.io/2018/02/01/MOOC-1/" data-id="cjgmj5f0k0004ma7lbjokyv5y" class="article-share-link">分享</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MOOC/">MOOC</a></li></ul>
 
     </footer>
   </div>
@@ -779,7 +814,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fisher-s-Exact-Test/">Fisher's Exact Test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOOC/">MOOC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Conference/">Conference</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Corpus-Linguistics/">Corpus Linguistics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cross-Validation/">Cross Validation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fisher-s-Exact-Test/">Fisher's Exact Test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Keras/">Keras</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MOOC/">MOOC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Neural-Network/">Neural Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Open-Source/">Open Source</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Perl/">Perl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reading/">Reading</a></li></ul>
     </div>
   </div>
 
@@ -792,6 +827,14 @@
       <ul>
         
           <li>
+            <a href="/2018/05/06/Python-Keras-1/">Python Keras 神经网络</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/06/R-DataFrame-3/">10-k Cross Validation</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/01/Perl-ML-1/">Perl：Machine Learning</a>
           </li>
         
@@ -801,14 +844,6 @@
         
           <li>
             <a href="/2018/04/29/R-DataFrame-2/">R 读取外部数据</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/23/Perl-Python-1/">Python：费舍尔精确检验</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/22/R-DataFrame-1/">R DataFrame 排序和筛选</a>
           </li>
         
       </ul>
